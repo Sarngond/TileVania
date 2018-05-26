@@ -609,6 +609,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -6, y: 2, z: 0}
+    second:
+      m_TileIndex: 46
+      m_TileSpriteIndex: 42
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 2
+      m_ColliderType: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
@@ -703,6 +712,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: ec719f61e29ce894e98eb6153ce455bc, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 0900f1d1df712b943bd9cdaeac8d19bd, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 23e165376ea6c0147add445fc2222336, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: b77b81948f9132f49971eabe99f940af, type: 3}
@@ -788,7 +799,7 @@ Tilemap:
     m_Data: {fileID: 21300054, guid: 062232737ad0bfe47841772e8348f2a0, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300014, guid: 062232737ad0bfe47841772e8348f2a0, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 21300012, guid: 062232737ad0bfe47841772e8348f2a0, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300034, guid: 062232737ad0bfe47841772e8348f2a0, type: 3}
@@ -797,7 +808,7 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 21300030, guid: 062232737ad0bfe47841772e8348f2a0, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 46
+  - m_RefCount: 47
     m_Data:
       e00: 1
       e01: 0
@@ -852,12 +863,12 @@ Tilemap:
       e32: 1e-45
       e33: 0
   m_TileColorArray:
-  - m_RefCount: 52
+  - m_RefCount: 53
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -8, y: -16, z: 0}
-  m_Size: {x: 13, y: 17, z: 1}
+  m_Size: {x: 13, y: 25, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -970,3 +981,5 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
+  - serializedVersion: 1
+    m_DirtyIndex: 21
