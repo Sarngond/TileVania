@@ -500,6 +500,20 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+    - serializedVersion: 2
+      name: SPA_Player_Default_28
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 6
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
