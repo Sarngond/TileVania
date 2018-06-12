@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 
 	// Config
 	[SerializeField] float runSpeed = 5f;
+	[SerializeField] float jumpSpeed = 5f;
 
 	// State
 	bool isAlive = true;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Run ();
+		Jump ();
 		FlipSprite ();
 	}
 
@@ -32,10 +34,17 @@ public class Player : MonoBehaviour {
 		float h = CrossPlatformInputManager.GetAxis ("Horizontal");
 		Vector2 playerVelocity = new Vector2 (h * runSpeed, myRigibody.velocity.y);
 		myRigibody.velocity = playerVelocity;
+		print (playerVelocity);
 
 		bool playerHasHorizontalSpeed = Mathf.Abs (myRigibody.velocity.x) > Mathf.Epsilon;
 		myAnimator.SetBool ("isRunning", playerHasHorizontalSpeed);
-		
+	}
+
+	private void Jump () {
+		if (CrossPlatformInputManager.GetButtonDown ("Jump")) {
+			Vector2 jumpVelocityToAdd = new Vector2 (0f, jumpSpeed);
+			myRigibody.velocity += jumpVelocityToAdd;
+		}
 	}
 
 	private void FlipSprite () {
