@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Run ();
+		FlipSprite ();
 	}
 
     private void Run ()
@@ -23,5 +24,12 @@ public class Player : MonoBehaviour {
 		float h = CrossPlatformInputManager.GetAxis ("Horizontal");
 		Vector2 playerVelocity = new Vector2 (h * runSpeed, myRigibody.velocity.y);
 		myRigibody.velocity = playerVelocity;
+	}
+
+	private void FlipSprite () {
+		bool playerHasHorizontalSpeed = Mathf.Abs (myRigibody.velocity.x) > Mathf.Epsilon;
+		if (playerHasHorizontalSpeed) {
+			transform.localScale = new Vector2 (Mathf.Sign(myRigibody.velocity.x) * 3, 3);
+		}
 	}
 }
