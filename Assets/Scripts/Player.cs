@@ -34,7 +34,6 @@ public class Player : MonoBehaviour {
 		float h = CrossPlatformInputManager.GetAxis ("Horizontal");
 		Vector2 playerVelocity = new Vector2 (h * runSpeed, myRigibody.velocity.y);
 		myRigibody.velocity = playerVelocity;
-		print (playerVelocity);
 
 		bool playerHasHorizontalSpeed = Mathf.Abs (myRigibody.velocity.x) > Mathf.Epsilon;
 		myAnimator.SetBool ("isRunning", playerHasHorizontalSpeed);

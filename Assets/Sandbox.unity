@@ -3565,6 +3565,11 @@ Prefab:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 50425968949185490, guid: a45a4184fbcd7aa4ea385c659415e4e9,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a45a4184fbcd7aa4ea385c659415e4e9, type: 2}
   m_IsPrefabParent: 0
@@ -3584,8 +3589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3630de3b1fb236d429e50c16d8f66166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 5
-  jumpSpeed: 7
+  runSpeed: 8
+  jumpSpeed: 20
 --- !u!1 &2147134058
 GameObject:
   m_ObjectHideFlags: 0
