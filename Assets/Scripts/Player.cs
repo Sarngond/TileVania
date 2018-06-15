@@ -17,19 +17,21 @@ public class Player : MonoBehaviour {
 	Rigidbody2D myRigibody;
 	Animator myAnimator;
 	Collider2D myCollider;
+	float gravityScaleAtStart;
 
 	// Messages then methods
 	void Start () {
 		myRigibody = GetComponent<Rigidbody2D> ();
 		myAnimator = GetComponent<Animator> ();
 		myCollider = GetComponent<Collider2D> ();
+		gravityScaleAtStart = myRigibody.gravityScale;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Run ();
-		Jump ();
 		ClimbLadder ();
+		Jump ();
 		FlipSprite ();
 	}
 
@@ -41,15 +43,6 @@ public class Player : MonoBehaviour {
 
 		bool playerHasHorizontalSpeed = Mathf.Abs (myRigibody.velocity.x) > Mathf.Epsilon;
 		myAnimator.SetBool ("isRunning", playerHasHorizontalSpeed);
-	}
-
-	private void Jump () {
-		bool canJump = myCollider.IsTouchingLayers (LayerMask.GetMask ("Ground"));
-
-		if (CrossPlatformInputManager.GetButtonDown ("Jump") && canJump) {
-			Vector2 jumpVelocityToAdd = new Vector2 (0f, jumpSpeed);
-			myRigibody.velocity += jumpVelocityToAdd;
-		}
 	}
 
 	private void ClimbLadder() {
@@ -64,8 +57,17 @@ public class Player : MonoBehaviour {
 			bool playerHasVerticalSpeed = Mathf.Abs (myRigibody.velocity.y) > Mathf.Epsilon;
 			myAnimator.SetBool ("isClimbing", playerHasVerticalSpeed);
 		} else {
-			myRigibody.gravityScale = 1;
+			myRigibody.gravityScale = gravityScaleAtStart;
 			myAnimator.SetBool ("isClimbing", false);
+		}
+	}
+
+	private void Jump () {
+		bool canJump = myCollider.IsTouchingLayers (LayerMask.GetMask ("Ground"));
+
+		if (CrossPlatformInputManager.GetButtonDown ("Jump") && canJump) {
+			Vector2 jumpVelocityToAdd = new Vector2 (0f, jumpSpeed);
+			myRigibody.velocity += jumpVelocityToAdd;
 		}
 	}
 
