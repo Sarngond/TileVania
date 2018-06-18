@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 	bool isAlive = true;
 
 	// Cached component references
-	Rigidbody2D myRigibody;
+	Rigidbody2D myRigidbody;
 	Animator myAnimator;
 	CapsuleCollider2D myBodyCollider;
 	BoxCollider2D myFeetCollider;
@@ -22,11 +22,11 @@ public class Player : MonoBehaviour {
 
 	// Messages then methods
 	void Start () {
-		myRigibody = GetComponent<Rigidbody2D> ();
+		myRigidbody = GetComponent<Rigidbody2D> ();
 		myAnimator = GetComponent<Animator> ();
 		myBodyCollider = GetComponent<CapsuleCollider2D> ();
 		myFeetCollider = GetComponent<BoxCollider2D> ();
-		gravityScaleAtStart = myRigibody.gravityScale;
+		gravityScaleAtStart = myRigidbody.gravityScale;
 	}
 	
 	// Update is called once per frame
@@ -40,10 +40,10 @@ public class Player : MonoBehaviour {
     private void Run ()
 	{
 		float h = CrossPlatformInputManager.GetAxis ("Horizontal");
-		Vector2 playerVelocity = new Vector2 (h * runSpeed, myRigibody.velocity.y);
-		myRigibody.velocity = playerVelocity;
+		Vector2 playerVelocity = new Vector2 (h * runSpeed, myRigidbody.velocity.y);
+		myRigidbody.velocity = playerVelocity;
 
-		bool playerHasHorizontalSpeed = Mathf.Abs (myRigibody.velocity.x) > Mathf.Epsilon;
+		bool playerHasHorizontalSpeed = Mathf.Abs (myRigidbody.velocity.x) > Mathf.Epsilon;
 		myAnimator.SetBool ("isRunning", playerHasHorizontalSpeed);
 	}
 
@@ -52,14 +52,14 @@ public class Player : MonoBehaviour {
 
 		if (isTouchingLadder) {
 			float v = CrossPlatformInputManager.GetAxis ("Vertical");
-			Vector2 climbVelocity = new Vector2 (myRigibody.velocity.x, v * climbSpeed);
-			myRigibody.velocity = climbVelocity;
-			myRigibody.gravityScale = 0;
+			Vector2 climbVelocity = new Vector2 (myRigidbody.velocity.x, v * climbSpeed);
+			myRigidbody.velocity = climbVelocity;
+			myRigidbody.gravityScale = 0;
 
-			bool playerHasVerticalSpeed = Mathf.Abs (myRigibody.velocity.y) > Mathf.Epsilon;
+			bool playerHasVerticalSpeed = Mathf.Abs (myRigidbody.velocity.y) > Mathf.Epsilon;
 			myAnimator.SetBool ("isClimbing", playerHasVerticalSpeed);
 		} else {
-			myRigibody.gravityScale = gravityScaleAtStart;
+			myRigidbody.gravityScale = gravityScaleAtStart;
 			myAnimator.SetBool ("isClimbing", false);
 		}
 	}
@@ -69,14 +69,14 @@ public class Player : MonoBehaviour {
 
 		if (CrossPlatformInputManager.GetButtonDown ("Jump") && canJump) {
 			Vector2 jumpVelocityToAdd = new Vector2 (0f, jumpSpeed);
-			myRigibody.velocity += jumpVelocityToAdd;
+			myRigidbody.velocity += jumpVelocityToAdd;
 		}
 	}
 
 	private void FlipSprite () {
-		bool playerHasHorizontalSpeed = Mathf.Abs (myRigibody.velocity.x) > Mathf.Epsilon;
+		bool playerHasHorizontalSpeed = Mathf.Abs (myRigidbody.velocity.x) > Mathf.Epsilon;
 		if (playerHasHorizontalSpeed) {
-			transform.localScale = new Vector2 (Mathf.Sign(myRigibody.velocity.x) * 3, 3);
+			transform.localScale = new Vector2 (Mathf.Sign(myRigidbody.velocity.x) * 3, 3);
 		}
 	}
 }
