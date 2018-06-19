@@ -31,10 +31,13 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!isAlive) { return; }
+
 		Run ();
 		ClimbLadder ();
 		Jump ();
 		FlipSprite ();
+		Die ();
 	}
 
     private void Run ()
@@ -73,10 +76,18 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	private void Die () {
+		if (myBodyCollider.IsTouchingLayers (LayerMask.GetMask ("Enemy"))) {
+			isAlive = false;
+			myAnimator.SetTrigger ("isDead");
+			myRigidbody.velocity = new Vector2 (2f * -transform.localScale.x, 20f);
+		}
+	}
+
 	private void FlipSprite () {
 		bool playerHasHorizontalSpeed = Mathf.Abs (myRigidbody.velocity.x) > Mathf.Epsilon;
 		if (playerHasHorizontalSpeed) {
-			transform.localScale = new Vector2 (Mathf.Sign(myRigidbody.velocity.x) * 3, 3);
+			transform.localScale = new Vector2 (Mathf.Sign(myRigidbody.velocity.x) * 1, 1);
 		}
 	}
 }
