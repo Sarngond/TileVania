@@ -2,9 +2,3 @@ sceneSetups:
 - path: Assets/Levels/Level_01.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/Levels/Main Menu.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Levels/Level_02.unity
-  isLoaded: 1
-  isActive: 0
